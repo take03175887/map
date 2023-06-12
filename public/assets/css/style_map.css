@@ -138,20 +138,20 @@ a:hover {
 	color: #ffffff;
 }
 
-#hokkaido {
+#北海道 {
 	width: 133px;
 	height: 70px;
 	
 }
 
-#aomori {
+#青森 {
 	width: 93px;
 	height: 43px;
 	left: 21px;
 	top: 96px;
 }
 
-#akita {
+#秋田 {
 	width: 67px;
 	height: 42px;
 	left: 3px;
@@ -159,28 +159,28 @@ a:hover {
 
 }
 
-#iwate {
+#岩手 {
 	width: 67px;
 	height: 42px;
 	left: 70px;
 	top: 139px;
 }
 
-#yamagata {
+#山形 {
 	width: 67px;
 	height: 42px;
 	top: 181px;
 	left: 3px;
 }
 
-#miyagi {
+#宮城 {
 	width: 67px;
 	height: 42px;
 	top: 181px;
 	left: 70px;
 }
 
-#fukushima {
+#福島 {
 	width: 67px;
 	height: 42px;
 	top: 223px;
@@ -203,49 +203,49 @@ a:hover {
 	color: #ffffff;
 }
 
-#ibaraki {
+#茨城 {
 	width: 52px;
 	height: 85px;
 	top: 0px;
 	left: 100px;
 }
 
-#tochigi {
+#栃木 {
 	width: 50px;
 	height: 42px;
 	top: 0px;
 	left: 50px;
 }
 
-#gunma {
+#群馬 {
 	width: 50px;
 	height: 42px;
 	top: 0px;
 	left: 0px;
 }
 
-#saitama {
+#埼玉 {
 	width: 100px;
 	height: 43px;
 	top: 42px;
 	left: 0px;
 }
 
-#chiba {
+#千葉 {
 	width: 52px;
 	height: 84px;
 	top: 85px;
 	left: 100px;
 }
 
-#tokyo {
+#東京 {
 	width: 100px;
 	height: 42px;
 	top: 85px;
 	left: 0px;
 }
 
-#kanagawa {
+#神奈川 {
 	width: 67px;
 	height: 42px;
 	top: 127px;
@@ -266,60 +266,60 @@ a:hover {
 	color: #ffffff;
 }
 
-#nigata {
+#新潟 {
 	width: 85px;
 	height: 42px;
 	left: 185px;
 }
 
-#toyama {
+#富山 {
 	width: 67px;
 	height: 42px;
 	left: 118px;
 }
 
-#ishikawa {
+#石川 {
 	width: 50px;
 	height: 57px;
 	left: 68px;
 }
 
-#fukui {
+#福井 {
 	width: 68px;
 	height: 42px;
 	left: 0px;
 	z-index: 2;
 }
 
-#nagano {
+#長野 {
 	width: 67px;
 	height: 85px;
 	left: 118px;
 	top: 42px
 }
 
-#yamanashi {
+#山梨 {
 	width: 67px;
 	height: 42px;
 	left: 118px;
 	top: 127px;
 }
 
-#gifu {
+#岐阜 {
 	width: 50px;
 	height: 55px;
 	left: 68px;
 	top: 57px
 }
 
-#shizuoka {
+#静岡 {
 	width: 67px;
 	height: 42px;
 	left: 118px;
 	top: 169px;
 }
 
-#aichi {
+#愛知 {
 	width: 50px;
 	height: 57px;
 	top: 112px;
@@ -340,48 +340,48 @@ a:hover {
 	color: #ffffff;
 }
 
-#kyoto {
+#京都 {
 	width: 67px;
 	height: 84px;
 	left: 51px;
 }
 
-#shiga {
+#滋賀 {
 	width: 68px;
 	height: 42px;
 	top: 42px;
 	left: 118px;
 }
 
-#osaka {
+#大阪 {
 	width: 67px;
 	height: 85px;
 	top: 84px;
 	left: 51px;
 }
 
-#nara {
+#奈良 {
 	width: 34px;
 	height: 85px;
 	top: 84px;
 	left: 118px;
 }
 
-#mie {
+#三重 {
 	width: 34px;
 	height: 85px;
 	top: 84px;
 	left: 152px;
 }
 
-#wakayama {
+#和歌山 {
 	width: 113px;
 	height: 42px;
 	top: 169px;
 	left: 61px;
 }
 
-#hyougo {
+#兵庫 {
 	width: 51px;
 	height: 98px;
 	left: 0px;
@@ -401,33 +401,33 @@ a:hover {
 	color: #ffffff;
 }
 
-#tottori {
+#鳥取 {
 	width: 50px;
 	height: 49px;
 	left: 101px;
 }
 
-#okayama {
+#岡山 {
 	width: 50px;
 	height: 49px;
 	top: 49px;
 	left: 101px;
 }
 
-#shimane {
+#島根 {
 	width: 51px;
 	height: 49px;
 	left: 50px;
 }
 
-#hiroshima {
+#広島{
 	width: 51px;
 	height: 49px;
 	top: 49px;
 	left: 50px;
 }
 
-#yamaguchi {
+#山口 {
 	width: 50px;
 	height: 98px;
 	left: 0px;
@@ -447,26 +447,26 @@ a:hover {
 	color: #ffffff;
 }
 
-#kagawa {
+#香川 {
 	width: 92px;
 	height: 42px;
 	right: 0px;
 }
 
-#ehime {
+#愛媛 {
 	width: 92px;
 	height: 42px;
 	left: 0px;
 }
 
-#tokushima {
+#徳島 {
 	width: 92px;
 	height: 42px;
 	right: 0px;
 	top: 42px;
 }
 
-#kouchi {
+#高知 {
 	width: 92px;
 	height: 42px;
 	left: 0px;
@@ -487,56 +487,56 @@ a:hover {
 	color: #ffffff;
 }
 
-#fukuoka {
+#福岡 {
 	width: 50px;
 	height: 50px;
 	left: 101px;
 	top: 0px;
 }
 
-#saga {
+#佐賀 {
 	width: 50px;
 	height: 50px;
 	left: 51px;
 	top: 0px;
 }
 
-#nagasaki {
+#長崎 {
 	width: 50px;
 	height: 50px;
 	left: 1px;
 	top: 0px;
 }
 
-#oita {
+#大分 {
 	width: 50px;
 	height: 50px;
 	left: 101px;
 	top: 50px;
 }
 
-#kumamoto {
+#熊本 {
 	width: 50px;
 	height: 100px;
 	left: 51px;
 	top: 50px;
 }
 
-#miyazaki {
+#宮崎 {
 	width: 50px;
 	height: 50px;
 	left: 101px;
 	top: 100px;
 }
 
-#kagoshima {
+#鹿児島 {
 	width: 68px;
 	height: 49px;
 	left: 83px;
 	top: 150px;
 }
 
-#okinawa {
+#沖縄 {
 	width: 50px;
 	height: 50px;
 	left: 1px;
@@ -545,5 +545,14 @@ a:hover {
 
 #emp {
 	background-color: #a9a9a9;
+}
+
+.text {
+	display:inline-block;
+  	margin:1em 0 0 0;
+  	background:gold;
+  	font-size:25px;
+  	padding:.5em 1em;
+  	border-radius:.5em;
 }
 

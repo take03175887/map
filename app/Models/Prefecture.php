@@ -9,15 +9,13 @@ class Prefecture extends Model
 {
     use HasFactory;
     
-    protected $table = 'prefecture';
-    
     public function posts()
     {
         return $this->hasMany(Post::class);
     }
     
-    public function getByPrefecture()
+    public function getPostByPrefecture()
     {
-        return $this->posts()->with('prefecture');
+        return $this->posts()->with('Prefecture')->get();
     }
 }

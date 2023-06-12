@@ -14,17 +14,17 @@
             </style>
         </head>
         <body class="antialiased">
-            <h1>Diary Name</h1>
+            <h1>日記作成画面</h1>
             <form action="/post" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="title">
-                    <h2>Title</h2>
+                    <h2>タイトル</h2>
                     <input type="text" name="post[title]" placeholder="タイトル" value="{{old('post.title')}}"/>  
                     <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
                 </div>
                 
                 <div class="photo">
-                    <h2>Photo</h2>
+                    <h2>写真</h2>
                     <font color='red'>(複数の画像ファイルを選択できます)</font>
                     <input type="file" name="image" onchange="previewImage(this);">
                     <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:1000px;">
@@ -42,13 +42,13 @@
                 </script>
                 
                 <div class="body">
-                    <h2>Body</h2>
+                    <h2>メモ</h2>
                     <textarea name="post[body]" placeholder="本文" {{old('post.body')}}></textarea>
                     <p class='body__error' style="color:red">{{ $errors->first('post.body') }}</p>
                 </div>
                 
                 <div class="prefecture">
-                    <h2>Prefecture</h2>
+                    <h2>県選択</h2>
                     <select size=5 name="prefecture_id">
                         <option value="">登録したい県を選んでください</option>
                         <option value="1">北海道</option>

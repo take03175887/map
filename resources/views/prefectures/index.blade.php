@@ -31,20 +31,19 @@
         <body class="antialiased">
             <p>日記一覧</p>
             <div class='content'>
-                @foreach ($post as $po)
-                    @foreach ($photo as $pho)
+                @foreach ($posts as $post)
+                    @foreach ($photos as $photo)
                     <div class="a">
-                        @if($po->id==$pho->id)
-                            <a href="/prefectures/{{$po->id}}/{{$pho->id}}">{{ $po->title }}</a>
+                        @if($post->id==$photo->id)
+                            <a href="/prefectures/{{$post->id}}/{{$photo->id}}">{{ $post->title }}</a>
                             <br>
-                            <img src="{{ $pho->image_url }}" alt="画像が読み込めません。"/>
+                            <img src="{{ $photo->image_url }}" alt="画像が読み込めません。"/>
                         @endif
                     </div>
                     @endforeach
                 @endforeach
             </div>
             <div class='footer'>
-                <a href="/post/create">＜追加＞</a>
                 <a href="/">＜TOP＞</a>
             </div>
         </body>

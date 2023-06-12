@@ -10,9 +10,26 @@ use Cloudinary;
 
 class PostController extends Controller
 {
-    public function index(Post $post)
+    public function index(Post $posts,Prefecture $prefectures)
    {
-       return view('post/index')->with(['post' => $post ->get()]);
+       $count = array();
+       for($i = 1; $i <= 47; $i++){
+           $count[0][$i]=0;
+       }
+       
+       foreach($posts->get() as $post) {
+           for($i = 1; $i <= 47; $i++){
+               if($post->prefecture_id==$i){
+                   $count[0][$i]=$count[0][$i]+1;
+               }
+           }
+       }
+	             
+        foreach($prefectures->get() as $prefecture){
+            $count[1][$prefecture->id] = $prefecture->name;
+        }
+	                
+       return view('post/index')->with(['count' => $count ]+(['prefecture' => $prefecture]));
    }
    
    public function prefecture(Request $request,Post $post, Photo $photo)
@@ -38,6 +55,6 @@ class PostController extends Controller
        
        $input += ['image_url' => $image_url];
        $photo->fill($input)->save();
-       return view('post/index')->with(['post' => $post ->get()]);
+       return redirect('/');
    }
 }

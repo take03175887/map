@@ -10,14 +10,14 @@ use Cloudinary;
 
 class PrefectureController extends Controller
 {
-    public function prefecture(Request $request,Prefecture $post, Photo $photo)
+    public function prefecture(Request $request,Prefecture $prefecture, Photo $photo)
     {
-        $post->id=$request->prefecture_id;
-        return view('prefectures.index')->with(['post' => $post -> getByPrefecture()->get()]+['photo' => $photo ->get()]);
+        $prefecture->id=$request->prefecture_id;
+        return view('prefectures.index')->with(['posts' => $prefecture -> getPostByPrefecture()]+['photos' => $photo ->get()]);
     }
     
     public function show(Post $post, Photo $photo)
     {
-        return view('prefectures.show')->with(['po' => $post, 'pho' => $photo]);
+        return view('prefectures.show')->with(['post' => $post, 'photo' => $photo]);
     }
 }

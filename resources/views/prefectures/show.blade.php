@@ -23,13 +23,13 @@
             <div class='content'>
                 <p>日記詳細</p>
                 <div class='content_post'>
-                    <p>{{ $po->title}}</p>
-                    <img src="{{ $pho->image_url }}" alt="画像が読み込めません。"/>
-                    <p>{{ $po->body}}</p>
+                    <p>{{ $post->title}}</p>
+                    <img src="{{ $photo->image_url }}" alt="画像が読み込めません。"/>
+                    <p>{{ $post->body}}</p>
                 </div>
             </div>
             <div class='footer'>
-                <a href="/prefectures/prefecture_id?prefecture_id={{$po->prefecture_id}}">＜戻る＞</a>
+                <a href="/prefectures/prefecture_id?prefecture_id={{$post->prefecture_id}}">＜戻る＞</a>
                 <br>
                 <a href="/">＜TOP＞</a>
             </div>

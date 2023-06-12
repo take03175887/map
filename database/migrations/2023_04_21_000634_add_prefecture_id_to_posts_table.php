@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('prefecture', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->foreignId('prefecture_id')->constrained('prefectures');
+            //
         });
     }
 
@@ -26,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prefecture');
+        Schema::table('posts', function (Blueprint $table) {
+            //
+        });
     }
 };
