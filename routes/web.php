@@ -27,7 +27,9 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
 
 Route::controller(PrefectureController::class)->middleware(['auth'])->group(function(){
     Route::get('/prefectures/{prefecture_id}', 'prefecture')->name('prefecture');
-    Route::get('/prefectures/{post}/{photo}','show')->name('show');
+    Route::post('/up/{post}','up')->name('up');
+    Route::post('/down/{post}','down')->name('down');
+    Route::get('/prefectures/{post}/{i}','show')->name('show');
 });
 
 Route::middleware('auth')->group(function () {

@@ -50,11 +50,15 @@ class PostController extends Controller
        $input['prefecture_id']= $request['prefecture_id'];
        $post->fill($input)->save();
        
-       $input = array('post_id' => Post::latest()->first()->id);
-       $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
-       
-       $input += ['image_url' => $image_url];
-       $photo->fill($input)->save();
+       $images = $request->file('image');
+       foreach($images as $image)
+       {
+           $input = array('post_id' => Post::latest()->first()->id);
+           $image_url = Cloudinary::upload($image->getRealPath())->getSecurePath();
+           $input += ['image_url' => $image_url];
+           $photo = New Photo;
+           $photo->fill($input)->save();
+       }
        return redirect('/');
    }
 }

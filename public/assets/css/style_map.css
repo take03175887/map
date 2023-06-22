@@ -65,6 +65,7 @@ a:hover img {
 a {
 	text-decoration: none;
 	color: #435ea9;
+	font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
 }
 
 a:hover {
@@ -117,6 +118,7 @@ a:hover {
 	margin-right: auto;
 	position: relative;
 	transform: scale(1.5)translate(0,30%);
+	bottom:50px;
 	
 }
 
@@ -549,10 +551,18 @@ a:hover {
 
 .text {
 	display:inline-block;
-  	margin:1em 0 0 0;
   	background:gold;
   	font-size:25px;
   	padding:.5em 1em;
   	border-radius:.5em;
+}
+
+h1 {
+	padding: 0.5em;
+	color: #494949;
+	background: #fffaf4;
+	border-left: solid 5px #ffaf58;
+	font-size: 25px;
+	font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
 }
 

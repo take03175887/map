@@ -1,0 +1,82 @@
+.element {
+    margin-left: 20px;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #0E2D96;
+    transition: 0.3s all;
+}
+button:hover {
+    text-decoration: none;
+    color: #0E2D96;
+    transition: 0.3s all;
+}
+span{
+    font-size:25px;
+}
+font{
+    font-size:25px;
+}
+.required::after {
+    content: "必須";
+    color: #ffffff;
+    background: #cc0000;
+    font-size: 0.8em;
+    padding: 0.3em;
+    border-radius: 0.5em;
+    margin-left: 0.3em;
+}
+
+.bn1 {
+    font-family: lato, sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    color: #ffffff;
+    display: inline-block;
+    padding: 10px 40px 10px 40px;
+    position: relative;
+    border: 3px solid #ffffff;
+    border-radius: 20px;
+    background-color: #FFAD90;
+}
+
+.bn15 {
+    font-family: lato, sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    color: #ffffff;
+    display: inline-block;
+    padding: 10px 40px 10px 40px;
+    position: relative;
+    border: 3px solid #ffffff;
+    border-radius: 20px;
+    background-color: #000000;
+}
+
+h1 {
+    padding: 0.5em;
+    color: #494949;
+    background: #fffaf4;
+    border-left: solid 5px #ffaf58;
+    font-size: 25px;
+    font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    font-size: 30px;
+}
+
+.box_css {
+    width: 1152px;
+    margin-top: 10px;
+    border: solid 3px #000000;
+    background-color: #ccc；
+}

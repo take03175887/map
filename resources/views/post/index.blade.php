@@ -7,17 +7,10 @@
             <!-- Fonts -->
             <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
             <link href="{{('/assets/css/style_map.css')}}" rel="stylesheet" type="text/css">
-            <style>
-                a{
-                    font-size:50px;
-                }
-            </style>
         </head>
         
         <body>
-            <div class="text">
-                <p>上のCreateから日記を作成できます。</p>
-            </div>
+            <h1>ホーム画面　　<p class="text">上のCreateから日記を作成できます。</p></h1>
             <div id="japan-map" class="clearfix">
                 <div id="hokkaido-touhoku" class="clearfix">
                     <p class="area-title">北海道・東北</p>
