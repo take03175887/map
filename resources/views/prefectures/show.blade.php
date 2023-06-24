@@ -21,11 +21,15 @@
                     margin:auto;
                 }
             </style>
+            <script>
+                let x=1;
+            </script>
         </head>
         <body>
             <h1>日記詳細</h1>
             <div class='element'>
                 <p class="bn1">{{ $post->title}}</p>
+                
                 @if($count[$post->id]>$p)
                 <form action="/up/{{$post->id}}" method="POST" class="bn15">
                     @csrf

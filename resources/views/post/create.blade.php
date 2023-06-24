@@ -100,7 +100,7 @@
                         </select>
                     </div>
                     <br>
-                    <input type="submit" class="bn15" value="保存">
+                    <button type="submit" class="bn15">保存</button>
                     <a href="/" class="bn15">TOP</a>
                 </form>
             </div>

@@ -16,13 +16,12 @@
                     <p class="area-title">北海道・東北</p>
                     <div class="area">
                         @for($i = 1 ;$i <= 7; $i++)
-                        <a href="/prefectures/prefecture_id?prefecture_id={{$i}}">
                             @if($count[0][$i]==0)
                             <div id={{$count[1][$i]}} style="background-color: #a9a9a9;">
-                                @else
-                            
-                            <div id={{$count[1][$i]}} style="background-color: #7478c2;">
-                                @endif
+                            @else
+                            <a href="/prefectures/prefecture_id?prefecture_id={{$i}}">
+                            <div id={{$count[1][$i]}} style="background-color: #7478c2; "opacity: 1.0";  onMouseOver="this.style.opacity=0.6" onMouseOut="this.style.opacity=1.0"">
+                            @endif
                                 <p>{{$count[1][$i]}}</p>
                             </div>
                         </a>
@@ -34,12 +33,11 @@
                     <p class="area-title">関東</p>
                     <div class="area">
                         @for($i = 8 ;$i <= 14; $i++)
-                        <a href="/prefectures/prefecture_id?prefecture_id={{$i}}">
                             @if($count[0][$i]==0)
                             <div id={{$count[1][$i]}} style="background-color: #a9a9a9;">
                                 @else
-                            
-                            <div id={{$count[1][$i]}} style="background-color: #31beca;">
+                            <a href="/prefectures/prefecture_id?prefecture_id={{$i}}">
+                            <div id={{$count[1][$i]}} style="background-color: #31beca; "opacity: 1.0";  onMouseOver="this.style.opacity=0.6" onMouseOut="this.style.opacity=1.0"">
                                 @endif
                                 <p>{{$count[1][$i]}}</p>
                             </div>
@@ -52,12 +50,11 @@
                     <p class="area-title">中部</p>
                     <div class="area">
                         @for($i = 15 ;$i <= 23; $i++)
-                        <a href="/prefectures/prefecture_id?prefecture_id={{$i}}">
                             @if($count[0][$i]==0)
                             <div id={{$count[1][$i]}} style="background-color: #a9a9a9;">
                                 @else
-                            
-                            <div id={{$count[1][$i]}} style="background-color: #4ab969;">
+                            <a href="/prefectures/prefecture_id?prefecture_id={{$i}}">
+                            <div id={{$count[1][$i]}} style="background-color: #4ab969; "opacity: 1.0";  onMouseOver="this.style.opacity=0.6" onMouseOut="this.style.opacity=1.0"">
                                 @endif
                                 <p>{{$count[1][$i]}}</p>
                             </div>
@@ -70,12 +67,11 @@
                     <p class="area-title">近畿</p>
                     <div class="area">
                         @for($i = 24 ;$i <= 30; $i++)
-                        <a href="/prefectures/prefecture_id?prefecture_id={{$i}}">
                             @if($count[0][$i]==0)
                             <div id={{$count[1][$i]}} style="background-color: #a9a9a9;">
                                 @else
-                            
-                            <div id={{$count[1][$i]}} style="background-color: #b0b72f;">
+                            <a href="/prefectures/prefecture_id?prefecture_id={{$i}}">
+                            <div id={{$count[1][$i]}} style="background-color: #b0b72f; "opacity: 1.0";  onMouseOver="this.style.opacity=0.6" onMouseOut="this.style.opacity=1.0"">
                                 @endif
                                 <p>{{$count[1][$i]}}</p>
                             </div>
@@ -88,12 +84,11 @@
                     <p class="area-title">中国</p>
                     <div class="area">
                         @for($i = 31 ;$i <= 35; $i++)
-                        <a href="/prefectures/prefecture_id?prefecture_id={{$i}}">
                             @if($count[0][$i]==0)
                             <div id={{$count[1][$i]}} style="background-color: #a9a9a9;">
                                 @else
-                            
-                            <div id={{$count[1][$i]}} style="background-color: #ef9f27;">
+                            <a href="/prefectures/prefecture_id?prefecture_id={{$i}}">
+                            <div id={{$count[1][$i]}} style="background-color: #ef9f27; "opacity: 1.0";  onMouseOver="this.style.opacity=0.6" onMouseOut="this.style.opacity=1.0"">
                                 @endif
                                 <p>{{$count[1][$i]}}</p>
                             </div>
@@ -106,12 +101,11 @@
                     <p class="area-title">四国</p>
                     <div class="area">
                         @for($i = 36 ;$i <= 39; $i++)
-                        <a href="/prefectures/prefecture_id?prefecture_id={{$i}}">
                             @if($count[0][$i]==0)
                             <div id={{$count[1][$i]}} style="background-color: #a9a9a9;">
                                 @else
-                            
-                            <div id={{$count[1][$i]}} style="background-color: #d08f68;">
+                            <a href="/prefectures/prefecture_id?prefecture_id={{$i}}">
+                            <div id={{$count[1][$i]}} style="background-color: #d08f68; "opacity: 1.0";  onMouseOver="this.style.opacity=0.6" onMouseOut="this.style.opacity=1.0"">
                                 @endif
                                 <p>{{$count[1][$i]}}</p>
                             </div>
@@ -124,12 +118,11 @@
                     <p class="area-title">九州・沖縄</p>
                     <div class="area">
                         @for($i = 40 ;$i <= 47; $i++)
-                        <a href="/prefectures/prefecture_id?prefecture_id={{$i}}">
                             @if($count[0][$i]==0)
                             <div id={{$count[1][$i]}} style="background-color: #a9a9a9;">
                                 @else
-                            
-                            <div id={{$count[1][$i]}} style="background-color: #ff7575;">
+                            <a href="/prefectures/prefecture_id?prefecture_id={{$i}}">
+                            <div id={{$count[1][$i]}} style="background-color: #ff7575; "opacity: 1.0";  onMouseOver="this.style.opacity=0.6" onMouseOut="this.style.opacity=1.0"">
                                 @endif
                                 <p>{{$count[1][$i]}}</p>
                             </div>

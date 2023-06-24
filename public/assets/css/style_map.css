@@ -15,7 +15,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
 	display: block;
 }
-
+/*
 body {
 	line-height: 1;
 }
@@ -61,7 +61,7 @@ a:hover img {
 	filter: alpha(opacity=60);
 	transition: all 0.4s;
 }
-
+*/
 a {
 	text-decoration: none;
 	color: #435ea9;
@@ -72,8 +72,10 @@ a:hover {
 	text-decoration: none;
 	color: #0E2D96;
 	transition: 0.3s all;
+	opacity: 0.5;
+	transition: 0.2s;
 }
-
+/*
 .clearfix:after {
 	content: ".";
 	display: block;
@@ -81,7 +83,7 @@ a:hover {
 	height: 0;
 	visibility: hidden;
 }
-
+*/
 /******* 地図成形 *******/
 #japan-map div div.area div {
 	border: 1px #ffffff solid;
@@ -103,11 +105,12 @@ a:hover {
 	box-sizing: border-box;
 	transition: 0.2s;
 }
-
+/*
 #japan-map div div.area div:hover {
 	opacity: 0.5;
 	transition: 0.2s;
 }
+*/
 
 #japan-map {
 	display: block;

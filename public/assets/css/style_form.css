@@ -3,14 +3,18 @@
 }
 
 a:hover {
-    text-decoration: none;
-    color: #0E2D96;
-    transition: 0.3s all;
+    opacity: 0.5;
+	transition: 0.2s;
 }
 button:hover {
     text-decoration: none;
     color: #0E2D96;
     transition: 0.3s all;
+    opacity: 0.5;
+	transition: 0.2s;
+}
+a{
+    font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
 }
 span{
     font-size:25px;
@@ -56,6 +60,7 @@ font{
     border: 3px solid #ffffff;
     border-radius: 20px;
     background-color: #000000;
+    
 }
 
 h1 {

@@ -25,7 +25,7 @@
                         @if($post->id == $i)
                             <a href="/prefectures/{{$post->id}}/{{$i}}" class="bn1">{{ $post->title }}</a>
                             <br>
-                            <img src="{{ $photo_page[$i][1]->image_url }}" alt="画像が読み込めません。"/>
+                            <img src="{{ $photo_page[$post->id][1]->image_url }}" alt="画像が読み込めません。"/>
                         @endif
                     </div>
                     @endfor

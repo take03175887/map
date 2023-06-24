@@ -32,7 +32,7 @@ class PrefectureController extends Controller
     public function get_photo_page(array $count){
         $latest_post_id = Post::latest()->first()->id;
         $photo_page = array();
-        $photos = Photo::orderBy('post_id','desc') ->get();
+        $photos = Photo::orderBy('post_id','asc') ->get();
         $d = 0;
             
         while($d < count($photos)){
@@ -45,7 +45,6 @@ class PrefectureController extends Controller
         }
         return $photo_page;
     }
-    
     public function prefecture(Request $request,Prefecture $prefecture,Photo $photos)
     {
         $prefecture->id=$request->prefecture_id;
@@ -56,11 +55,11 @@ class PrefectureController extends Controller
     
     public function show(Request $request,Prefecture $prefecture,Post $post,Photo $photos)
     {
-        $p=1;
         $prefecture->id=$request->prefecture_id;
+        $p = 1;
         $count = $this->get_count($photos);
         $photo_page = $this->get_photo_page($count);
-        return view('prefectures.show')->with(['post' => $post]+['photo_page' => $photo_page]+['count' => $count]+['p' => $p]);
+        return view('prefectures.show')->with(['post' => $post]+['photo_page' => $photo_page]+['count' => $count]+['p' => $p]+['photo'=> $photos]);
     }
     
     public function up(Request $request,Prefecture $prefecture,Post $post,Photo $photos)
