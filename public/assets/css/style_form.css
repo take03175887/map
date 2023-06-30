@@ -83,5 +83,10 @@ h1 {
     width: 1152px;
     margin-top: 10px;
     border: solid 3px #000000;
-    background-color: #ccc；
+    background-color: #ffffff；
+}
+
+#preview img {
+	width:1000px;
+	border:1px solid #cccccc;
 }

@@ -210,6 +210,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'Prefectures' => App\Functions\Prefectures::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 

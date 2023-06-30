@@ -31,12 +31,12 @@ class PostController extends Controller
 	                
        return view('post/index')->with(['count' => $count ]+(['prefecture' => $prefecture]));
    }
-   
+   /*
    public function prefecture(Request $request,Post $post, Photo $photo)
    {
        $post->prefecture_id=$request->prefecture_id;
        return view('post/prefecture')->with(['post' => $post ->get()]+['photo' => $photo->get()]);
-   }
+   }*/
    
    public function create(Post $post)
    {

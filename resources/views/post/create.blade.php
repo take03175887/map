@@ -23,18 +23,21 @@
                     <div class="photo">
                         <span class = "required">写真</span>
                         <br>
-                        <input type="file" name="image[]" multiple="multiple" onchange="previewImage(this);">
-                        <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:1000px;">
+                        <input type="file" name="image[]" multiple="multiple" onchange="loadImage(this);">
+                        <p id="preview"></p>
                     </div>
                     
                     <script>
-                    function previewImage(obj)
+                    function loadImage(obj)
                     {
-    	                var fileReader = new FileReader();
-    	                fileReader.onload = (function() {
-    	                document.getElementById('preview').src = fileReader.result;
-    	                });
-    	                fileReader.readAsDataURL(obj.files[0]);
+    	                document.getElementById('preview').innerHTML='<p>プレビュー</p>';
+    	                for(let i=0; i<obj.files.length; i++){
+    	                    var fileReader = new FileReader();
+    	                    fileReader.onload = (function (e) {
+    	                        document.getElementById('preview').innerHTML += '<img src="' + e.target.result + '">';
+    	                    });
+    	                    fileReader.readAsDataURL(obj.files[i]);
+    	                }
                     }
                     </script>
                     

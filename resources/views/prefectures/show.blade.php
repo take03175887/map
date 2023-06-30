@@ -21,38 +21,52 @@
                     margin:auto;
                 }
             </style>
-            <script>
-                let x=1;
-            </script>
         </head>
         <body>
             <h1>日記詳細</h1>
             <div class='element'>
                 <p class="bn1">{{ $post->title}}</p>
-                
-                @if($count[$post->id]>$p)
+                <!--写真ページボタン-->
+                @if($count [$post->id] > $page)
                 <form action="/up/{{$post->id}}" method="POST" class="bn15">
                     @csrf
-                    <input type="hidden" name="p" value={{$p}}>
+                    <input type="hidden" name="page" value={{$page}}>
                     <button type="submit">＞</button>
                 </form>
                 @endif
-                @if($p-1>0)
-                <form action="/down/{{$post->id}}" method="POST" class="bn15">
+                @if($page - 1 > 0)
+                <form action="/down/{{ $post->id }}" method="POST" class="bn15">
                     @csrf
-                    <input type="hidden" name="p" value={{$p}}>
+                    <input type="hidden" name="page" value={{ $page }}>
                     <button type="submit">＜</button>
                 </form>
                 @endif
+                
+                <!--写真の削除機能-->
+                <form action="/prefectures/{{ $photo_page[$post->id][$page]->id }}" id="form_{{ $photo_page[$post->id][$page]->id }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" onclick="deletePost({{$photo_page[$post->id][$page]->id}})">削除</button>
+                </form>
+                <script>
+                    function deletePost(id){
+                        'use strict'
+                        
+                        if(confirm('削除すると復元できません。\n本当に削除しますか？')) {
+                            document.getElementById(`form_${id}`).submit();
+                        }
+                    }
+                </script>
                 <div class='a'>
-                    <img src="{{ $photo_page[$post->id][$p]->image_url }}" alt="画像が読み込めません。"/>
-                    <p class="box_css">{{ $post->body}}</p>
+                    <img src="{{ $photo_page[$post->id][$page]->image_url }}" alt="画像が読み込めません。"/>
+                    <p class="box_css">{{ $post->body }}</p>
                 </div>
             </div>
             <div class='footer'>
                 <a href="/prefectures/prefecture_id?prefecture_id={{$post->prefecture_id}}" class="bn15">戻る</a>
                 <a href="/" class="bn15">TOP</a>
             </div>
+            
         </body>
     </html>
 </x-app-layout>
