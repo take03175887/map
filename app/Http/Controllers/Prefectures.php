@@ -21,7 +21,6 @@ class Prefectures
                 }
             }
         }
-        return $this->counts;
     }
     
     public function get_photo_page(array $counts){

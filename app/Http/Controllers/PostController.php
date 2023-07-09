@@ -31,12 +31,6 @@ class PostController extends Controller
 	                
        return view('post/index')->with(['count' => $count ]+(['prefecture' => $prefecture]));
    }
-   /*
-   public function prefecture(Request $request,Post $post, Photo $photo)
-   {
-       $post->prefecture_id=$request->prefecture_id;
-       return view('post/prefecture')->with(['post' => $post ->get()]+['photo' => $photo->get()]);
-   }*/
    
    public function create(Post $post)
    {
@@ -59,6 +53,19 @@ class PostController extends Controller
            $photo = New Photo;
            $photo->fill($input)->save();
        }
+       return redirect('/');
+   }
+   
+   public function edit(Post $post)
+   {
+       return view('post/edit')->with(['post' => $post]);
+   }
+   
+   public function update(Request $request, Post $post)
+   {
+       $input = $request['post'];
+       $post->fill($input)->save();
+       
        return redirect('/');
    }
 }

@@ -8,11 +8,42 @@
             <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
             <link href="{{('/assets/css/style_form.css')}}" rel="stylesheet" type="text/css">
             <style>
-                img{
-                    width: 575px;
-                    height: 420px;
-                    position: relative;
-	                margin: 20px;
+                .card {
+                  width: 575px;
+                  height: 450px;
+                  position: relative;
+                  background: #ffffff;
+                  margin: 20px;
+                  display: block;
+                }
+                .card__inner {
+                 padding: 15px;
+                }
+                img {
+                    width: 540px;
+                    height: 300px;
+                }
+                .card__imgframe{
+                  padding: 20px 18px;
+                  position: relative;
+                }
+                .card__textbox{
+                  width: 100%;
+                  height: auto;
+                  padding: 20px 18px;
+                  box-sizing: border-box;
+                }
+                .card__textbox > * + *{
+                  margin-top: 10px;
+                }
+                .card__titletext{
+                  font-size: 20px;
+                  font-weight: bold;
+                  line-height: 125%;
+                }
+                .card__overviewtext{
+                  font-size: 12px;
+                  line-height: 150%;
                 }
             </style>
         </head>
@@ -23,9 +54,25 @@
                     @for ($i = 1; $i <= $post->id; $i++)
                     <div class="a">
                         @if($post->id == $i)
-                            <a href="/prefectures/{{$post->id}}/{{$i}}" class="bn1">{{ $post->title }}</a>
-                            <br>
-                            <img src="{{ $photo_page[$post->id][1]->image_url }}" alt="画像が読み込めません。"/>
+                        <div class="card">
+                            <div class="card__imgframe">
+                                <a href="/prefectures/{{ $post->id }}/{{$i}}">
+                                    <img src="{{ $photo_page[$post->id][1]->image_url }}" alt="画像が読み込めません。"/>
+                                </a>
+                            </div>
+                            <div class="card__textbox">
+                                <div class="card__titletext">{{ $post->title }}</div>
+                                <div class="card__overviewtext">
+                                    作成日：{{ $post->created_at }}<br>
+                                    編集日：{{ $post->updated_at }}
+                                    <form action="/post/{{ $post->id }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" color="red">削除</button>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
                         @endif
                     </div>
                     @endfor

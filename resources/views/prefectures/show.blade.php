@@ -16,8 +16,8 @@
                     top:500px;
                 }
                 img{
-                    width: 1152px;
-                    height: 780px;
+                    width: 60%;
+                    height: 60%;
                     margin:auto;
                 }
             </style>
@@ -41,12 +41,31 @@
                     <button type="submit">＜</button>
                 </form>
                 @endif
+                <!--写真追加機能-->
+                <form action="/prefectures/store/{{ $post->id }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="image[]" multiple="multiple" onchange="loadImage(this);">
+                    <p id="preview"></p>
+                    <!--プレビュー機能-->
+                    <script>
+                    function loadImage(obj){
+        	        document.getElementById('preview').innerHTML='<p>プレビュー</p>';
+        	        for(let i=0; i<obj.files.length; i++){
+        	            var fileReader = new FileReader();
+        	            fileReader.onload = (function (e) {
+        	            document.getElementById('preview').innerHTML += '<img src="' + e.target.result + '">';
+        	            });
+        	            fileReader.readAsDataURL(obj.files[i]);}
+                    }
+                    </script>
+                    <button type="submit">写真を追加</button>
+                </form>
                 
                 <!--写真の削除機能-->
                 <form action="/prefectures/{{ $photo_page[$post->id][$page]->id }}" id="form_{{ $photo_page[$post->id][$page]->id }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="button" onclick="deletePost({{$photo_page[$post->id][$page]->id}})">削除</button>
+                    <button type="button" onclick="deletePost({{$photo_page[$post->id][$page]->id}})">写真を削除</button>
                 </form>
                 <script>
                     function deletePost(id){
@@ -57,6 +76,10 @@
                         }
                     }
                 </script>
+                
+                <!--編集画面へ-->
+                <a href="/post/edit/{{ $post->id }}">入力の編集</a>
+                
                 <div class='a'>
                     <img src="{{ $photo_page[$post->id][$page]->image_url }}" alt="画像が読み込めません。"/>
                     <p class="box_css">{{ $post->body }}</p>

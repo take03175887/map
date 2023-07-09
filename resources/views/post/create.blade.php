@@ -25,21 +25,21 @@
                         <br>
                         <input type="file" name="image[]" multiple="multiple" onchange="loadImage(this);">
                         <p id="preview"></p>
+                        <!--プレビュー機能-->
+                        <script>
+                        function loadImage(obj)
+                        {
+        	                document.getElementById('preview').innerHTML='<p>プレビュー</p>';
+        	                for(let i=0; i<obj.files.length; i++){
+        	                    var fileReader = new FileReader();
+        	                    fileReader.onload = (function (e) {
+        	                        document.getElementById('preview').innerHTML += '<img src="' + e.target.result + '">';
+        	                    });
+        	                    fileReader.readAsDataURL(obj.files[i]);
+        	                }
+                        }
+                        </script>
                     </div>
-                    
-                    <script>
-                    function loadImage(obj)
-                    {
-    	                document.getElementById('preview').innerHTML='<p>プレビュー</p>';
-    	                for(let i=0; i<obj.files.length; i++){
-    	                    var fileReader = new FileReader();
-    	                    fileReader.onload = (function (e) {
-    	                        document.getElementById('preview').innerHTML += '<img src="' + e.target.result + '">';
-    	                    });
-    	                    fileReader.readAsDataURL(obj.files[i]);
-    	                }
-                    }
-                    </script>
                     
                     <div class="body">
                         <span class = "required">メモ</span>

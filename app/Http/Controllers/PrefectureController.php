@@ -12,7 +12,6 @@ use Prefectures;
 
 class PrefectureController extends Controller
 {
-    
     public function get_count() {
         $latest_post_id = Post::latest()->first()->id;
         $count = array();
@@ -33,7 +32,7 @@ class PrefectureController extends Controller
         return $count;
     }
     
-    public function get_photo_page(array $counts){
+    public function get_photo_page(array $count){
         $latest_post_id = Post::latest()->first()->id;
         $photo_page = array();
         $photos = Photo::orderBy('post_id','asc') ->get();
@@ -41,7 +40,7 @@ class PrefectureController extends Controller
             
         while($d < count($photos)){
             for($i = 1; $i <= $latest_post_id; $i++){
-                for($p = 1; $p <= $counts[$i]; $p++){
+                for($p = 1; $p <= $count[$i]; $p++){
                     $photo_page[$i][$p] = $photos[$d];
                     $d = $d + 1;
                 }
@@ -60,15 +59,14 @@ class PrefectureController extends Controller
         $photos = Photo::all();
         
         $prefecture->get_count();
-        dd($prefecture->get_count());
-    }
-    */
+    }*/
+    
     public function prefecture(Request $request,Prefecture $prefecture)
     {
         $prefecture->id = $request->prefecture_id;
         $count = $this->get_count();
         $photo_page = $this->get_photo_page($count);
-        return view('prefectures.index')->with(['posts' => $prefecture -> getPostByPrefecture()]+['photo_page' => $photo_page]);
+        return view('prefectures.index')->with(['posts' => $prefecture -> getPostByPrefecture()]+['photo_page' => $photo_page]+['count' => $count]);
     }
     
     public function show(Request $request,Prefecture $prefecture,Post $post)
@@ -102,4 +100,25 @@ class PrefectureController extends Controller
         $photo->delete();
         return redirect('/');
     }
+    
+    public function delete_post($post_id)
+    {
+        Photo::where('post_id',$post_id)->delete();
+        Post::where('id',$post_id)->delete();
+        return redirect('/');
+    }
+    
+    public function store(Request $request, Photo $photo)
+   {
+       $images = $request->file('image');
+       foreach($images as $image)
+       {
+           $input = array('post_id' => $request['post']);
+           $image_url = Cloudinary::upload($image->getRealPath())->getSecurePath();
+           $input += ['image_url' => $image_url];
+           $photo = New Photo;
+           $photo->fill($input)->save();
+       }
+       return redirect('/');
+   }
 }
