@@ -16,8 +16,8 @@ class PostController extends Controller
        for($i = 1; $i <= 47; $i++){
            $count[0][$i]=0;
        }
-       
-       foreach($posts->get() as $post) {
+       $posts = Post::where('user_id', \Auth::user()->id)->get();
+       foreach($posts as $post) {
            for($i = 1; $i <= 47; $i++){
                if($post->prefecture_id==$i){
                    $count[0][$i]=$count[0][$i]+1;
