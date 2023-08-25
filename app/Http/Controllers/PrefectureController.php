@@ -3,97 +3,69 @@
 namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Photo;
+use App\Models\Tag;
 use App\Models\Prefecture;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Cloudinary;
-use Prefectures;
+use App\Http\Controllers\Card;
+use Illuminate\Support\Facades\DB;
 
 class PrefectureController extends Controller
 {
-    public function get_count() {
-        $latest_post_id = Post::latest()->first()->id;
-        $count = array();
-            
-        for($i = 1; $i <= $latest_post_id; $i++){
-                $count[$i] = 0;
-        }
-        
-        $photos = Photo::all();
-        
-        foreach($photos as $photo){
-            for($i = 1; $i <= $latest_post_id; $i++){
-                 if($photo->post_id == $i){
-                    $count[$i] = $count[$i] + 1;
-                }
-            }
-        }
-        return $count;
-    }
     
-    public function get_photo_page(array $count){
-        $latest_post_id = Post::latest()->first()->id;
-        $photo_page = array();
-        $photos = Photo::orderBy('post_id','asc') ->get();
-        $d = 0;
-            
-        while($d < count($photos)){
-            for($i = 1; $i <= $latest_post_id; $i++){
-                for($p = 1; $p <= $count[$i]; $p++){
-                    $photo_page[$i][$p] = $photos[$d];
-                    $d = $d + 1;
-                }
-            }
-        }
-        return $photo_page;
+    public function prefecture($prefecture_id)
+    {
+        $user = auth()->user();
+        $posts = $user->posts->where('prefecture_id', $prefecture_id);
+        $cards = $posts->map(function ($post) {
+            return new Card($post);
+        });
+        $prefecture = Prefecture::where('id', $prefecture_id)->first();
+        return view('prefectures/index')->with(['cards' => $cards, 'prefecture' => $prefecture]);
     }
-    
     /*
-    public function get_count(){
-        require_once('Prefectures.php');
-        
-        $prefecture = new Prefectures();
-        
-        $prefecture->latest_id = Post::latest()->first()->id;
-        $photos = Photo::all();
-        
-        $prefecture->get_count();
-    }*/
-    
-    public function prefecture(Request $request,Prefecture $prefecture)
+    public function show($card_id)
     {
-        $prefecture->id = $request->prefecture_id;
-        $count = $this->get_count();
-        $photo_page = $this->get_photo_page($count);
-        return view('prefectures.index')->with(['posts' => $prefecture -> getPostByPrefecture()]+['photo_page' => $photo_page]+['count' => $count]);
+        $page = 0;
+        $post = Post::find($card_id);
+        $card = new Card($post);
+        return view('prefectures/show')->with(['card' => $card , 'page' => $page]);
     }
     
-    public function show(Request $request,Prefecture $prefecture,Post $post)
-    {
-        $page = 1;
-        $prefecture->id = $request->prefecture_id;
-        $count = $this->get_count();
-        $photo_page = $this->get_photo_page($count);
-        return view('prefectures.show')->with(['post' => $post]+['photo_page' => $photo_page]+['count' => $count]+['page' => $page]);
-    }
-    
-    public function up(Request $request,Prefecture $prefecture,Post $post)
+    public function up(Request $request,$card_id)
     {
         $page = $request['page'] + 1;
-        $prefecture->id = $request->prefecture_id;
-        $count = $this->get_count();
-        $photo_page = $this->get_photo_page($count);
-        return view('prefectures.show')->with(['post' => $post]+['photo_page' => $photo_page]+['count' => $count]+['page' => $page]);
+        $post = Post::find($card_id);
+        $card = new Card($post);
+        return view('prefectures/show')->with(['card' => $card , 'page' => $page]);
     }
     
-    public function down(Request $request,Prefecture $prefecture,Post $post)
+    public function down(Request $request,$card_id)
     {
         $page = $request['page'] - 1;
-        $prefecture->id = $request->prefecture_id;
-        $count = $this->get_count();
-        $photo_page = $this->get_photo_page($count);
-        return view('prefectures.show')->with(['post' => $post]+['photo_page' => $photo_page]+['count' => $count]+['page' => $page]);
+        $post = Post::find($card_id);
+        $card = new Card($post);
+        return view('prefectures/show')->with(['card' => $card , 'page' => $page]);
+    }*/
+    
+    public function show($card_id, $page = 0)
+    {
+        $post = Post::find($card_id);
+        $card = new Card($post);
+        
+        return view('prefectures/show', compact('card', 'page'));
+    }
+    
+    public function up(Request $request, $card_id)
+    {
+        return $this->show($card_id, $request->input('page', 0) + 1);
+    }
+    
+    public function down(Request $request, $card_id)
+    {
+        return $this->show($card_id, $request->input('page', 0) - 1);
     }
     
     public function delete(Photo $photo){
@@ -101,10 +73,11 @@ class PrefectureController extends Controller
         return redirect('/');
     }
     
-    public function delete_post($post_id)
+    public function delete_card($card_id)
     {
-        Photo::where('post_id',$post_id)->delete();
-        Post::where('id',$post_id)->delete();
+        DB::table('post_tag')->where('post_id', $card_id)->delete();
+        Photo::where('post_id',$card_id)->delete();
+        Post::where('id',$card_id)->delete();
         return redirect('/');
     }
     

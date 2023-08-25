@@ -25,24 +25,24 @@
         <body>
             <h1>日記詳細</h1>
             <div class='element'>
-                <p class="bn1">{{ $card->getTitle() }}</p>
+                <p class="bn1">{{ $post->title}}</p>
                 <!--写真ページボタン-->
-                @if($page + 1 < $card->getPageMax())
-                <form action="/up/{{$card->getId()}}" method="POST" class="bn15">
+                @if($count [$post->id] > $page)
+                <form action="/up/{{$post->id}}" method="POST" class="bn15">
                     @csrf
                     <input type="hidden" name="page" value={{$page}}>
                     <button type="submit">＞</button>
                 </form>
                 @endif
-                @if($page  > 0)
-                <form action="/down/{{ $card->getId() }}" method="POST" class="bn15">
+                @if($page - 1 > 0)
+                <form action="/down/{{ $post->id }}" method="POST" class="bn15">
                     @csrf
-                    <input type="hidden" name="page" value={{$page}}>
+                    <input type="hidden" name="page" value={{ $page }}>
                     <button type="submit">＜</button>
                 </form>
                 @endif
                 <!--写真追加機能-->
-                <form action="/prefectures/store/{{ $card->getId() }}" method="POST" enctype="multipart/form-data">
+                <form action="/prefectures/store/{{ $post->id }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="file" name="image[]" multiple="multiple" onchange="loadImage(this);">
                     <p id="preview"></p>
@@ -62,10 +62,10 @@
                 </form>
                 
                 <!--写真の削除機能-->
-                <form action="/prefectures/{{ $card->getPhotoId($page) }}" id = "form_{{ $card->getPhotoId($page) }}" method="POST">
+                <form action="/prefectures/{{ $photo_page[$post->id][$page]->id }}" id="form_{{ $photo_page[$post->id][$page]->id }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="button" onclick="deletePost({{ $card->getPhotoId($page) }})">写真を削除</button>
+                    <button type="button" onclick="deletePost({{$photo_page[$post->id][$page]->id}})">写真を削除</button>
                 </form>
                 <script>
                     function deletePost(id){
@@ -78,15 +78,15 @@
                 </script>
                 
                 <!--編集画面へ-->
-                <a href="/post/edit/{{ $card->getId() }}">入力の編集</a>
+                <a href="/post/edit/{{ $post->id }}">入力の編集</a>
                 
                 <div class='a'>
-                    <img src="{{ $card->getPhotosImage($page) }}" alt="画像が読み込めません。"/>
-                    <p class="box_css">{{ $card->getBody() }}</p>
+                    <img src="{{ $photo_page[$post->id][$page]->image_url }}" alt="画像が読み込めません。"/>
+                    <p class="box_css">{{ $post->body }}</p>
                 </div>
             </div>
             <div class='footer'>
-                <a href="/prefectures/{{ $card->getPrefecture_id() }}" class="bn15">戻る</a>
+                <a href="/prefectures/{{$post->prefecture_id}}" class="bn15">戻る</a>
                 <a href="/" class="bn15">TOP</a>
             </div>
             

@@ -2,12 +2,22 @@
 
 class Prefectures
 {
-    protected $latest_post_id;
-    protected $counts = array();
+    //プロパティ
+    public $latest_post_id;
+    public $counts;
+    public $photos;
+    public $photo_page;
+    public $d;
     
-    protected $photos = array();
-    protected $photo_page = array();
-    protected $d = 0;
+    //コンストラクタ
+    public function __construct($latest_post_id)
+    {
+        $this->latest_post_id = $latest_post_id;
+        $this->counts = array();
+        $this->photos = array();
+        $this->photo_page = array();
+        $this->d = 0;
+    }
     
     public function get_count() {
         for($i = 1; $i <= $this->latest_post_id; $i++){
@@ -32,6 +42,5 @@ class Prefectures
                 }
             }
         }
-        return $photo_page;
     }
 }
