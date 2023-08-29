@@ -22,15 +22,6 @@ span{
 font{
     font-size:25px;
 }
-.required::after {
-    content: "必須";
-    color: #ffffff;
-    background: #cc0000;
-    font-size: 0.8em;
-    padding: 0.3em;
-    border-radius: 0.5em;
-    margin-left: 0.3em;
-}
 
 .bn1 {
     font-family: lato, sans-serif;
@@ -77,13 +68,6 @@ h1 {
     flex-wrap: wrap;
     position: relative;
     font-size: 30px;
-}
-
-.box_css {
-    width: 1152px;
-    margin-top: 10px;
-    border: solid 3px #000000;
-    background-color: #ffffff；
 }
 
 #preview img {

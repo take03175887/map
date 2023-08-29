@@ -14,6 +14,7 @@
             <!-- Fonts -->
             <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
             <link href="{{('/assets/css/style_form.css')}}" rel="stylesheet" type="text/css">
+            <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
         </head>
         <body>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,28 +26,18 @@
                                     @csrf
                                     <div class="w-full flex flex-col">
                                         <label for="body" class="font-semibold leading-none mt-4">件名</label>
-                                        <input type="text" name="post[title]" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="title" placeholder="Enter Title">
-                                        <p class='title__error' style="color:red">{{ $errors->first('post.title') }}</p>
+                                        <input type="text" name="post[title]" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="title" placeholder="Enter Title" value="{{old('post.title')}}">
                                     </div>
-                                    <!--
-                                    <div class="title">
-                                        <span class = "required">タイトル</span>
-                                        <br>
-                                        <input type="text" name="post[title]" placeholder="タイトル" value="{{old('post.title')}}"/>  
-                                        <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
-                                    </div>
-                                    -->
                                     
                                     <div class="w-full flex flex-col">
                                         <label for="body" class="font-semibold leading-none mt-4">本文</label>
-                                        <textarea name="post[body]" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="body" cols="30" rows="10"></textarea>
-                                        <p class='body__error' style="color:red">{{ $errors->first('post.body') }}</p>
+                                        <textarea name="post[body]" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="body" cols="30" rows="10">{{old('post.body')}}</textarea>
                                     </div>
                                     
                                     <div class="photo">
-                                        <label class = "font-semibold leading-none mt-4">写真</label>
+                                        <label class = "font-semibold leading-none mt-4">写真（写真は複数選択することができます）</label>
                                         <br>
-                                        <input type="file" name="image[]" multiple="multiple" onchange="loadImage(this);">
+                                        <input type="file" name="image[]" multiple="multiple" onchange="loadImage(this);" value="{{old('image[]')}}">
                                         <p class='image__error' style="color:red">{{ $errors->first('photo.image') }}</p>
                                         <p id="preview"></p>
                                         <!--プレビュー機能-->
@@ -64,18 +55,11 @@
                                         }
                                         </script>
                                     </div>
-                                    <!--
-                                    <div class="body">
-                                        <span class = "required">メモ</span>
-                                        <br>
-                                        <textarea name="post[body]" placeholder="本文" {{old('post.body')}}></textarea>
-                                        <p class='body__error' style="color:red">{{ $errors->first('post.body') }}</p>
-                                    </div>
-                                    -->
+                                    
                                     <div class="prefecture">
                                         <label class = "font-semibold leading-none mt-4">県を選択</label>
                                         <br>
-                                        <select size=5 name="prefecture_id">
+                                        <select size=5 name="prefecture_id" value="{{old('prefecture_id')}}">
                                             <option value="">登録したい県を選んでください</option>
                                             <option value="1">北海道</option>
                                             <option value="2">青森</option>
@@ -127,11 +111,11 @@
                                         </select>
                                     </div>
                                     <div class = "tag">
-                                        <label class = "font-semibold leading-none mt-4">タグの選択</label>
+                                        <label class = "font-semibold leading-none mt-4">タグの選択（上部のタグから作成できます）</label>
                                         @foreach($tags as $tag)
                                         <label>
                                             <br>
-                                            <input type="checkbox" value={{ $tag->id }} name="tags_array[]">
+                                            <input type="checkbox" value="{{ $tag->id }}" name="tags_array[]" >
                                                 {{$tag->tag_title}}
                                             </input>
                                         </label>
@@ -139,7 +123,7 @@
                                     </div>
                                     <br>
                                     <button type="submit" class="bn15">保存</button>
-                                    <a href="/" class="bn15">TOP</a>
+                                    <a href="{{route('index')}}" class="bn15">TOP</a>
                                 </form>
                             </div>
                         </div>

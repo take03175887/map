@@ -22,26 +22,27 @@ Route::get('/dashboard', function () {
 
 Route::controller(PostController::class)->middleware(['auth'])->group(function(){
     Route::get('/', 'index')->name('index');
+    Route::get('/post/show/{cardId}','show')->name('show');
+    Route::post('/up/{cardId}','up')->name('up');
+    Route::post('/down/{cardId}','down')->name('down');
     Route::post('/post', 'store')->name('store');
     Route::get('/post/create', 'create')->name('create');
+    Route::get('/post/edit/{post}','edit')->name('edit');
     Route::put('/post/update/{post}', 'update')->name('update');
+    Route::delete('/card/{cardId}', 'deleteCard')->name('deleteCard');
+    Route::delete('/post/photo/{photo}','photoDelete')->name('photoDelete');
 });
 
 Route::controller(PrefectureController::class)->middleware(['auth'])->group(function(){
-    Route::get('/prefectures/{prefecture_id}', 'prefecture')->name('prefecture');
+    Route::get('/prefecture/serch', 'serch')->name('serch');
+    Route::get('/prefectures/{prefecture_id}', 'index')->name('prefectureIndex');
     Route::post('/prefectures/store/{post}','store')->name('store');
-    Route::post('/up/{card_id}','up')->name('up');
-    Route::post('/down/{card_id}','down')->name('down');
-    Route::get('/prefectures/show/{card_id}','show')->name('show');
-    /*Route::get('/tag/show/{tag_id}', 'tag_show')->name('tag_show');*/
-    Route::delete('/prefectures/{photo}','delete')->name('delete');
-    Route::delete('/card/{card_id}', 'delete_card')->name('delete_card');
 });
 
 Route::controller(TagController::class)->middleware(['auth'])->group(function(){
     Route::get('/tag/create','tag_create')->name('tag_create');
-    Route::post('/tag', 'tag_store')->name('store');
-    Route::get('/tag/show/{tag_id}' ,'tag_show')->name('show');
+    Route::post('/tag', 'tag_store')->name('tag_store');
+    Route::get('/tag/{tag_id}' ,'index')->name('tag_show');
 });
 
 Route::middleware('auth')->group(function () {

@@ -4,22 +4,28 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Photo;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 class TagController extends Controller
 {
-    public function tag_create(Tag $tag)
+    public function tag_create()
    {
-       return view('tag/index')->with(['tag' => $tag]);
+       $user = auth()->user();
+       $tags = $user->tags()->with('user')->get();
+       return view('tag/create')->with(['tags' =>$tags]);
    }
    
    public function tag_store(Request $request, Tag $tag)
    {
        $input['tag_title'] = $request['tag_title'];
+       $input['user_id'] = Auth::id();
        $tag->fill($input)->save();
-       return redirect('/');
+       $user = auth()->user();
+       $tags = $user->tags()->with('user')->get();
+       return redirect()->route('tag_create')->with(['tags' =>$tags]);
    }
    
-   public function tag_show(Post $post,Tag $tag, $tag_id)
+   public function index(Post $post,Tag $tag, $tag_id)
    {
        
        $user = auth()->user();
@@ -30,6 +36,6 @@ class TagController extends Controller
             return new Card($post);
         });
        $tag = Tag::where('id',$tag_id)->first();
-       return view('/tag/show')->with(['cards' => $cards, 'tag' => $tag]);
+       return view('/tag/index')->with(['cards' => $cards, 'tag' => $tag]);
    }
 }

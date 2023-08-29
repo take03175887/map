@@ -13,9 +13,4 @@ class Prefecture extends Model
     {
         return $this->hasMany(Post::class);
     }
-    
-    public function getPostByPrefecture()
-    {
-        return $this->posts()->with('Prefecture')->get();
-    }
 }

@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 
-class PostRequest extends FormRequest
+class CreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,6 +31,8 @@ class PostRequest extends FormRequest
             'post.title' => 'required|string|max:100',
             'post.body' => 'required|string|max:4000',
             'prefecture_id' => 'required',
+            'image' => 'required|array',
+            'image.*' => 'image|mimes:jpeg,png,gif|max:2048',
 
             //
         ];

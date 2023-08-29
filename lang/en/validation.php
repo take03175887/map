@@ -181,7 +181,8 @@ return [
 
     'attributes' => [
         'post.title' =>'件名',
-        'post.body' => '本文',
-        'image' => '写真'],
+        'post[body]' => '本文',
+        'image[]' => '写真'
+        ],
 
 ];

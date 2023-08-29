@@ -6,7 +6,7 @@ use App\Models\Tag;
 
 class Card {
     private $id;
-    private $prefecture_id;
+    private $prefecture;
     private $created_at;
     private $updated_at;
     private $body;
@@ -16,7 +16,7 @@ class Card {
     
     public function __construct(Post $post){
         $this->id = $post->id;
-        $this->prefecture_id = $post->prefecture_id;
+        $this->prefecture = $post->prefecture()->first();
         $this->created_at = $post->created_at;
         $this->updated_at = $post->updated_at;
         $this->body = $post->body;
@@ -25,8 +25,12 @@ class Card {
         $this->photos = Photo::where('post_id' ,$post->id)->get();
     }
     
-    public function getPhotosImage ($page) {
+    public function getPhotosImage($page) {
         return $this->photos->pluck('image_url')[$page];
+    }
+    
+    public function getPhotos() {
+        return $this->photos;
     }
     
     public function getPhotoId ($page) {
@@ -38,12 +42,16 @@ class Card {
         return $pageMax;
     }
     
-    public function getId () {
+    public function getId() {
         return $this->id;
     }
     
-    public function getPrefecture_id () {
-        return $this->prefecture_id;
+    public function getPrefecture_id() {
+        return $this->prefecture->pluck('id');
+    }
+    
+    public function getPrefecture() {
+        return $this->prefecture;
     }
     
     public function getCreated_at() {
